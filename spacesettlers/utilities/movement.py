@@ -11,6 +11,7 @@ from vector_2d import Vector2D
 
 class Movement:
 
+    # Set constants for game movement.
     MAX_TRANSLATIONAL_ACCELERATION = 62.0
     MAX_ANGLULAR_ACCELERATION = math.pi
 
@@ -18,17 +19,17 @@ class Movement:
         self.translational_acceleration = Vector2D()
         self.angular_acceleration = 0.0
 
-    def set_translational_acceleration(self, translationalAcceleration: Vector2D) -> None:
-        self.translational_acceleration = translationalAcceleration
+    def set_translational_acceleration(self, translational_acceleration: Vector2D) -> None:
+        self.translational_acceleration = translational_acceleration
 
-        if translationalAcceleration.magnitude / Movement.MAX_TRANSLATIONAL_ACCELERATION:
-            ratio = translationalAcceleration.get_magnitude() / Movement.MAX_TRANSLATIONAL_ACCELERATION
+        if translational_acceleration.magnitude / Movement.MAX_TRANSLATIONAL_ACCELERATION:
+            ratio = translational_acceleration.get_magnitude() / Movement.MAX_TRANSLATIONAL_ACCELERATION
             self.translational_acceleration = self.translational_acceleration.multiply(1. / ratio)
 
-    def set_angular_accleration(self, angularAccleration) -> None:
-        if angularAccleration > Movement.MAX_ANGLULAR_ACCELERATION:
+    def set_angular_accleration(self, angular_accleration) -> None:
+        if angular_accleration > Movement.MAX_ANGLULAR_ACCELERATION:
             self.angular_acceleration = Movement.MAX_ANGLULAR_ACCELERATION
-        elif angularAccleration < -Movement.MAX_ANGLULAR_ACCELERATION:
+        elif angular_accleration < -Movement.MAX_ANGLULAR_ACCELERATION:
             self.angular_acceleration = -Movement.MAX_ANGLULAR_ACCELERATION
         else:
-            self.angular_acceleration = angularAccleration
+            self.angular_acceleration = angular_accleration
